@@ -6,3 +6,6 @@
  */
 
 require('./bootstrap');
+require('bootstrap-datepicker');
+require('bootstrap-select');
+require('./custom');

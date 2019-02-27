@@ -9,11 +9,11 @@ class Worker extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'chief_id',
         'full_name',
         'job',
         'hire_date',
         'salary',
+        'chief_id',
     ];
 
     public function chief()

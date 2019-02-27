@@ -7,6 +7,8 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.min.css';
+@import '~bootstrap-select/sass/bootstrap-select';
 
 .home .list-group {
   font-size: 1rem;
@@ -15,7 +17,7 @@
   }
 }
 #loading {
-  display: block;
+  display: none;
   position: fixed;
   top: calc(50% - 25px);
   left: calc(50% - 25px);

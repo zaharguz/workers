@@ -1,3 +1,4 @@
+<h1 class="h1 text-center m-3">Список сотрудников</h1>
 <div class="col-10 offset-1">
     <div class="row">
         <div class="col-8">
@@ -55,7 +56,7 @@
             </tr>
             </thead>
             <tbody id="workers-table-content">
-            @include('parts.workers_loop')
+            @include('parts.workers.loop')
             </tbody>
         </table>
     </div>
