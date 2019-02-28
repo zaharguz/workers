@@ -11113,6 +11113,22 @@ select.selectpicker {
   margin-left: 30px;
 }
 
+.home .list-group .collapser:before {
+  content: "+";
+  line-height: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.home .list-group .collapser.collapsed:before {
+  content: "-";
+}
+
+.home .list-group .collapser:hover {
+  text-decoration: none;
+}
+
 .table-img {
   max-width: 80px;
 }

@@ -11,37 +11,52 @@
 @import '~bootstrap-select/sass/bootstrap-select';
 
 .home .list-group {
-  font-size: 1rem;
-  .list-group {
-    margin-left: 30px;
-  }
+	font-size: 1rem;
+	.list-group {
+		margin-left: 30px;
+	}
+	.collapser {
+		&:before {
+			content: '+';
+			line-height: 1rem;
+			font-size: 1.6rem;
+			font-weight: 700;
+			color: #000;
+		}
+		&.collapsed:before {
+			content: '-';
+		}
+		&:hover {
+			text-decoration: none;
+		}
+	}
 }
 
 .table-img {
-  max-width: 80px;
+	max-width: 80px;
 }
 
 .form-img {
-  max-width: 200px;
+	max-width: 200px;
 }
 
 #loading {
-  display: none;
-  position: fixed;
-  top: calc(50% - 25px);
-  left: calc(50% - 25px);
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(0, 0, 0, 0.3);
-  border-radius: 50%;
-  border-top-color: #000;
-  animation: spin 1s ease-in-out infinite;
-  -webkit-animation: spin 1s ease-in-out infinite;
+	display: none;
+	position: fixed;
+	top: calc(50% - 25px);
+	left: calc(50% - 25px);
+	width: 50px;
+	height: 50px;
+	border: 3px solid rgba(0, 0, 0, 0.3);
+	border-radius: 50%;
+	border-top-color: #000;
+	animation: spin 1s ease-in-out infinite;
+	-webkit-animation: spin 1s ease-in-out infinite;
 }
 
 @keyframes spin {
-  to { -webkit-transform: rotate(360deg); }
+	to { -webkit-transform: rotate(360deg); }
 }
 @-webkit-keyframes spin {
-  to { -webkit-transform: rotate(360deg); }
+	to { -webkit-transform: rotate(360deg); }
 }

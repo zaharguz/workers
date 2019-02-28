@@ -46,6 +46,10 @@ window.ajaxDelete = function(filename, token) {
     });
 };
 
+$(document).on('click', '.collapser', function () {
+    $(this).toggleClass('collapsed').parent().next('.collapse').collapse('toggle');
+});
+
 $(document).on('click', '.pagination a.page-link', function (event) {
     event.preventDefault();
     ajaxLoad($(this).attr('href'));

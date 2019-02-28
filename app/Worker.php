@@ -13,6 +13,7 @@ class Worker extends Model
         'job',
         'hire_date',
         'salary',
+        'photo',
         'chief_id',
     ];
 
