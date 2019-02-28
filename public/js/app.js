@@ -41625,7 +41625,7 @@ window.ajaxLoad = function (filename, content) {
       $(content).html(data);
       $('#loading').hide();
     },
-    error: function error(xhr, status, _error) {
+    error: function error(xhr) {
       alert(xhr.responseText);
     }
   });
@@ -41659,7 +41659,7 @@ window.ajaxDelete = function (filename, token) {
       $('#loading').hide();
       ajaxLoad(data.redirect_url);
     },
-    error: function error(xhr, status, _error2) {
+    error: function error(xhr) {
       alert(xhr.responseText);
     }
   });
@@ -41753,7 +41753,7 @@ $(document).on('keyup', '.selectpicker-container .bs-searchbox input', function 
         });
         $('.selectpicker').html(options).selectpicker('refresh');
       },
-      error: function error(xhr, status, _error3) {
+      error: function error(xhr) {
         alert(xhr.responseText);
       }
     });

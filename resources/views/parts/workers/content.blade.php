@@ -33,6 +33,9 @@
                     @if(request()->session()->get('sort_field') === 'full_name') {!! request()->session()->get('sort_type') === 'asc' ? '&#9652;' : '&#9662;' !!} @endif
                 </th>
                 <th>
+                    <span>Фото</span>
+                </th>
+                <th>
                     <a href="javascript:ajaxLoad('{{ route('workers', ['sort_field' => 'job', 'sort_type' => (request()->session()->get('sort_type') === 'asc') ? 'desc' : 'asc']) }}')"
                        class="text-white">Должность</a>
                     @if(request()->session()->get('sort_field') === 'job') {!! request()->session()->get('sort_type') === 'asc' ? '&#9652;' : '&#9662;' !!} @endif
@@ -52,7 +55,10 @@
                        class="text-white">ФИО начальника</a>
                     @if(request()->session()->get('sort_field') === 'chief_id') {!! request()->session()->get('sort_type') === 'asc' ? '&#9652;' : '&#9662;' !!} @endif
                 </th>
-                <th scope="col">Действия</th>
+                <th scope="col">
+                    <span class="mr-5">Действия</span>
+                    <a href="javascript:ajaxLoadModal('{{ route('create_worker') }}', '#modalContainer .modal-body')" class="btn btn-success btn-sm">Добавить</a>
+                </th>
             </tr>
             </thead>
             <tbody id="workers-table-content">

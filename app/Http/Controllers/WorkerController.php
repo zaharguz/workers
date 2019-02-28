@@ -53,9 +53,9 @@ class WorkerController extends Controller
     {
         if ($request->isMethod('get')) {
             if ($request->ajax()) {
-                return view('parts.workers.form');
+                return view('parts.workers.form', ['chiefs' => Worker::where('chief_id', 0)->pluck('id', 'full_name')]);
             }
-            return view('workers.update');
+            return view('workers.update', ['chiefs' => Worker::where('chief_id', 0)->pluck('id', 'full_name')]);
         }
 
         $rules = [
@@ -63,6 +63,7 @@ class WorkerController extends Controller
             'job' => 'required',
             'hire_date' => 'required',
             'salary' => 'required',
+            'photo'         => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'chief_id' => 'required',
         ];
 
@@ -71,6 +72,7 @@ class WorkerController extends Controller
             'job.required'          => 'Введите должность работника',
             'hire_date.required'    => 'Укажите дату приема на работу',
             'salary.required'       => 'Введите размер зарплаты работника',
+            'photo'                 => 'Неверный файл',
             'chief_id.required'     => 'Укажите начальника',
         ];
 
@@ -87,6 +89,10 @@ class WorkerController extends Controller
         $worker->job = $request->job;
         $worker->hire_date = Carbon::parse($request->hire_date)->format('Y-m-d');
         $worker->salary = $request->salary;
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('workers', 'public');
+            $worker->photo = 'storage/' . $path;
+        }
         if ((int)$request->chief_id === 0) {
             $worker->chief_id = 0;
             $worker->save();
@@ -125,6 +131,7 @@ class WorkerController extends Controller
             'job'           => 'required',
             'hire_date'     => 'required',
             'salary'        => 'required',
+            'photo'         => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'chief_id'      => 'required',
         ];
 
@@ -133,6 +140,9 @@ class WorkerController extends Controller
             'job.required'          => 'Введите должность работника',
             'hire_date.required'    => 'Укажите дату приема на работу',
             'salary.required'       => 'Введите размер зарплаты работника',
+            'photo.image'           => 'Неверный файл',
+            'photo.mimes'           => 'Неверный файл',
+            'photo.max'             => 'Неверный файл',
             'chief_id.required'     => 'Укажите начальника',
         ];
 
@@ -149,6 +159,10 @@ class WorkerController extends Controller
         $worker->job = $request->job;
         $worker->hire_date = Carbon::parse($request->hire_date)->format('Y-m-d');
         $worker->salary = $request->salary;
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('workers', 'public');
+            $worker->photo = 'storage/' . $path;
+        }
         if ((int)$request->chief_id === 0) {
             $worker->chief_id = 0;
         } else {

@@ -45,6 +45,21 @@
     </div>
 
     <div class="form-group row">
+        <label for="photo" class="col-form-label col-md-4 col-12">Фото работника</label>
+        <div class="col-md-8 col-12 row">
+            @if(isset($worker->photo))
+            <div class="col-md-4 col-12">
+                <img src="{{ $worker->photo }}" alt="worker photo" class="img-thumbnail rounded img-fluid">
+            </div>
+            @endif
+            <div class="col-md-8 col-12">
+                <input type="file" name="photo" id="photo" class="form-control-file {{ $errors->has('salary') ? ' is-invalid' : '' }}">
+                <span id="error-photo" class="invalid-feedback"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
         <label for="chief_id" class="col-form-label col-md-4 col-12">Начальник</label>
         <div class="col-md-8 col-12 selectpicker-container">
             <input type="hidden" id="find_worker" value="{{ route('find_worker') }}">
@@ -53,11 +68,17 @@
                 <option value="0">- Отсутствует -</option>
                 @if(isset($worker->chief))
                     <option value="{{ $worker->chief->id }}" selected>{{ $worker->chief->full_name }}</option>
-                    @foreach($worker->chief->chief->subordinates as $subworker)
-                        @if($subworker->id !== $worker->chief->id)
-                            <option value="{{ $subworker->id }}">{{ $subworker->full_name }}</option>
-                        @endif
-                    @endforeach
+                    @if(isset($worker->chief->chief))
+                        @foreach($worker->chief->chief->subordinates as $subworker)
+                            @if($subworker->id !== $worker->chief->id)
+                                <option value="{{ $subworker->id }}">{{ $subworker->full_name }}</option>
+                            @endif
+                        @endforeach
+                    @else
+                        @foreach($chiefs as $name => $id)
+                            <option value="{{ $id }}">{{ $name }}</option>
+                        @endforeach
+                    @endif
                 @else
                     @foreach($chiefs as $name => $id)
                         <option value="{{ $id }}">{{ $name }}</option>

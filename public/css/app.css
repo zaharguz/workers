@@ -11113,6 +11113,14 @@ select.selectpicker {
   margin-left: 30px;
 }
 
+.table-img {
+  max-width: 80px;
+}
+
+.form-img {
+  max-width: 200px;
+}
+
 #loading {
   display: none;
   position: fixed;

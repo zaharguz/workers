@@ -2,6 +2,11 @@
     <tr>
         <th scope="row">{{ $worker->id }}</th>
         <td>{{ $worker->full_name }}</td>
+        <td>
+            @if(isset($worker->photo))
+            <img src="{{ $worker->photo }}" alt="worker photo" class="img-thumbnail rounded table-img">
+            @endif
+        </td>
         <td>{{ $worker->job }}</td>
         <td>${{ $worker->salary }}</td>
         <td>{{ Carbon\Carbon::parse($worker->hire_date)->format('d.m.Y') }}</td>

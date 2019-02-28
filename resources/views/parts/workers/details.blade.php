@@ -2,6 +2,15 @@
 <hr/>
 <form class="worker-form">
     <fieldset disabled>
+        @if(isset($worker->photo))
+        <div class="form-group row">
+            <span class="col-form-label col-md-4 col-12">Фото</span>
+            <div class="col-md-8 col-12">
+                <img src="{{ $worker->photo }}" alt="worker photo" class="img-thumbnail rounded form-img">
+            </div>
+        </div>
+        @endif
+
         <div class="form-group row">
             <label for="full_name" class="col-form-label col-md-4 col-12">ФИО</label>
             <div class="col-md-8 col-12">
